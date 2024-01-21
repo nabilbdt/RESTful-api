@@ -1,0 +1,15 @@
+{
+  "name": "restful-api",
+  "version": "1.0.0",
+  "description": "rest api (node.js,mongodb,express.js)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node server.js"
+  },
+  "author": "Nabil ELBAYAD",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
