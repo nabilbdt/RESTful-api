@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Product = require('./models/productModel');
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({extended: false}))
 
 
 //routes
@@ -58,6 +59,19 @@ app.put('/products/:id', async(req,res) => {
         res.status(500).json({message: error.message});
     }
 })
+//delete
+app.delete('/products/:id', async(req,res) => {
+    try {
+        const {id} = req.params;
+    const product = await Product.findByIdAndDelete(id);
+    if(!product){
+        return res.status(404).json({message: `cannot find any product with ID ${id}`})
+    }
+    res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+});
 //MONGOdb connection
 mongoose.set("strictQuery", false);
 mongoose
